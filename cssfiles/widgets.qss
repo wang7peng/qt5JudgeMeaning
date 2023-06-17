@@ -1,0 +1,13 @@
+QPushButton {
+    color: black;
+    background-color: Crimson;
+}
+/* 悬空 */
+QPushButton:hover {
+    background: orange;
+}
+/* 按下 */
+QPushButton:pressed {
+    padding-top: 1px;
+    padding-left: 3px;
+}
