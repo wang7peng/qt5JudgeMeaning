@@ -37,7 +37,16 @@ void Home::switchpage(int i) {
                       cmpCode.at(3).first == cmpCode.at(3).second ? 2 : 1);
         addSkinCircle(ui->led5, 10,
                       cmpCode.at(4).first == cmpCode.at(4).second ? 2 : 1);
-        ui->labelRes->setText(QString("对 %1 题").arg(count));
+
+        // 按成绩换色
+        if (count > 3) {
+            ui->ResAssess->setText(
+                QString("<font color=green>对 %1 题</font>").arg(count));
+        } else {
+            ui->ResAssess->setText(
+                QString("<font color=red>对 %1 题</font>").arg(count));
+        }
+        ui->ResAssess->adjustSize();
     }
     ui->stackedWidget->setCurrentIndex(i);
 }
@@ -55,6 +64,8 @@ Home::Home(QWidget *parent) : QMainWindow(parent), ui(new Ui::Home) {
         ui->timeWidget->display(timeStr);
     });
     ptrTimer->start(1000);
+
+    ui->menuSetup->addAction(ui->action_serverIP);
 
     // 读取xml文件内容, 用两个控件显示
     reader = new XmlStreamReader(ui->dataTree, ui->dataTable);
@@ -82,6 +93,9 @@ Home::Home(QWidget *parent) : QMainWindow(parent), ui(new Ui::Home) {
     connect(ui->action_appV, SIGNAL(triggered()), this, SLOT(openAppVersion()));
     connect(ui->action_qtV, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect(ui->action_manual, SIGNAL(triggered()), this, SLOT(openManual()));
+
+    // 设置菜单内容
+    connect(ui->action_serverIP, SIGNAL(triggered()), this, SLOT(setServerIP()));
 }
 
 Home::~Home() { delete ui; }
@@ -111,6 +125,10 @@ QCheckBox *Home::getCheckBox_level6() { return ui->level6; }
 QCheckBox *Home::getCheckBox_level8() { return ui->level8; }
 
 QTableWidget *Home::getdataTable() { return ui->dataTable; }
+
+void Home::setServerIP() {
+    qDebug() << "弹出树控件，显示已经配置的ip";
+}
 
 void Home::openAppVersion(QWidget *parent) {
     QMessageBox appVersion;

@@ -2,6 +2,19 @@ QPushButton {
     color: black;
     background-color: Crimson;
 }
+/* 指定控件, 控件名和#之间不能有空格 */
+QFrame#menuFace{
+    background-color: Turquoise;
+}
+QLabel#ResAssess{
+    font-family: Times New Roman;
+    font-size: 25px;
+    font-weight: bold;
+}
+QPushButton#btnItemLook{
+    color: black;
+    background-color: Violet; /* #EE82EE */
+}
 /* 悬空 */
 QPushButton:hover {
     background: orange;

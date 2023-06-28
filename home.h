@@ -43,6 +43,7 @@ class Home : public QMainWindow {
 
     void selectConfig();
     void selectRecentFiles();
+    void setServerIP();
     // 跳出版本号提示框
     void openAppVersion(QWidget *parent = 0);
     void openManual();

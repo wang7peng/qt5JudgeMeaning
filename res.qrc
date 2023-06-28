@@ -7,5 +7,6 @@
         <file>images/data_pos.png</file>
         <file>images/analysis_logo.png</file>
         <file>images/alldata_logo.png</file>
+        <file alias="setup">images/setup3d.png</file>
     </qresource>
 </RCC>
